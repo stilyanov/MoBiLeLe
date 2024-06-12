@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column()
     private String username;
 
     @Column
