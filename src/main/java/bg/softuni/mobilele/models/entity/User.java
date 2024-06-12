@@ -12,8 +12,11 @@ import java.time.LocalDateTime;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column()
+    @Column
     private String username;
+
+    @Column
+    private String email;
 
     @Column
     private String password;
@@ -38,6 +41,14 @@ public class User extends BaseEntity {
 
     @ManyToOne
     private UserRole role;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public UserRole getRole() {
         return role;
