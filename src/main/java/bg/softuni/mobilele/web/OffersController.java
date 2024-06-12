@@ -4,23 +4,22 @@ import bg.softuni.mobilele.service.OfferService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/offers")
-public class OfferDetailController {
+public class OffersController {
 
     private final OfferService offerService;
 
-    public OfferDetailController(OfferService offerService) {
+    public OffersController(OfferService offerService) {
         this.offerService = offerService;
     }
 
-    @GetMapping("/{id}")
-    public String detail(@PathVariable Long id, Model model) {
-        model.addAttribute("offerDetails", offerService.getOfferDetails(id));
+    @GetMapping("/all")
+    public String allOffers(Model model) {
+        model.addAttribute("allOffers", offerService.getAllOffersSummary());
 
-        return "details";
+        return "offers";
     }
 }

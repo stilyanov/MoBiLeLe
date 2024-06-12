@@ -2,11 +2,14 @@ package bg.softuni.mobilele.service.impl;
 
 import bg.softuni.mobilele.models.dto.AddOfferDTO;
 import bg.softuni.mobilele.models.dto.OfferDetailsDTO;
+import bg.softuni.mobilele.models.dto.OfferSummaryDTO;
 import bg.softuni.mobilele.models.entity.Offer;
 import bg.softuni.mobilele.repository.OfferRepository;
 import bg.softuni.mobilele.service.OfferService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OfferServiceImpl implements OfferService {
@@ -21,7 +24,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public long createOrder(AddOfferDTO addOfferDTO) {
-        return offerRepository.saveAndFlush(modelMapper.map(addOfferDTO, Offer.class)).getId();
+        return offerRepository.save(modelMapper.map(addOfferDTO, Offer.class)).getId();
     }
 
     @Override
@@ -29,6 +32,19 @@ public class OfferServiceImpl implements OfferService {
         return this.offerRepository.findById(id)
                 .map(o -> this.modelMapper.map(o, OfferDetailsDTO.class))
                 .orElse(null);
+    }
+
+    @Override
+    public void deleteOffer(long id) {
+        this.offerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<OfferSummaryDTO> getAllOffersSummary() {
+      return this.offerRepository.findAll()
+              .stream()
+              .map(o -> this.modelMapper.map(o, OfferSummaryDTO.class))
+              .toList();
     }
 
 }

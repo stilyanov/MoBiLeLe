@@ -10,7 +10,6 @@
     <script src="/js/bootstrap.min.js"></script>
 </head>
 
-
 <body>
 
 <div th:fragment="navbar(activeLink)">
@@ -24,14 +23,15 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto col-12 justify-content-between">
-                <li class="nav-item">
+                <li class="nav-item"
+                >
                     <a class="nav-link" href="/brands/all">All Brands</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/offers/add" th:classapppend="${activeLink == 'add-offer'} ? 'active' ">Add Offer</a>
+                    <a class="nav-link" href="/offers/add"  th:classappend="${activeLink == 'add-offer'}? 'active'">Add Offer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/offers/all">All Offers</a>
+                    <a class="nav-link" href="/offers/all" th:classappend="${activeLink == 'all-offers'}? 'active'">All Offers</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="/" id="navbarDropdown" role="button"
@@ -45,24 +45,32 @@
                         <a class="dropdown-item" href="/">Something else here</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" th:if="${@currentUser.isLoggedIn()}">
                     <div class="form-inline my-2 my-lg-0 border px-3">
                         <div class="logged-user"
                              text="Welcome, Gosho"></div>
-                        <a class="nav-link" href="/users/logout">Logout</a>
+                        <form th:method="post"
+                              th:action="@{/users/logout}">
+                            <input class="btn btn-link" type="submit" value="Logout"/>
+                        </form>
                     </div>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/register">Register</a>
+                <li class="nav-item" th:unless="${@currentUser.isLoggedIn()}">
+                    <a class="nav-link" href="/users/register"
+                       th:classappend="${activeLink == 'register'}? 'active'">Register</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/users/login">Login</a>
+                <li class="nav-item" th:unless="${@currentUser.isLoggedIn()}">
+                    <a class="nav-link" href="/users/login"
+                       th:classappend="${activeLink == 'login'}? 'active'">
+                        Login
+                    </a>
                 </li>
 
             </ul>
         </div>
     </nav>
+
 </div>
 
 </body>
