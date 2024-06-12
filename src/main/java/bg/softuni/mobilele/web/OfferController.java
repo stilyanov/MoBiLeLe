@@ -30,10 +30,10 @@ public class OfferController {
 
     @GetMapping("/add")
     public String newOffer(Model model) {
-//
-//        if (!model.containsAttribute("addOfferDTO")) {
-//            model.addAttribute("addOfferDTO", AddOfferDTO.empty());
-//        }
+
+        if (!model.containsAttribute("addOfferDTO")) {
+            model.addAttribute("addOfferDTO", AddOfferDTO.empty());
+        }
 
         return "offer-add";
     }

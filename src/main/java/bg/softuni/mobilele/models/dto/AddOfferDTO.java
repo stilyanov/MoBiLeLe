@@ -1,7 +1,6 @@
 package bg.softuni.mobilele.models.dto;
 
 import bg.softuni.mobilele.models.enums.EngineType;
-import bg.softuni.mobilele.models.enums.TransmissionType;
 import jakarta.validation.constraints.*;
 
 public record AddOfferDTO(
@@ -13,4 +12,7 @@ public record AddOfferDTO(
         @NotNull EngineType engineType
 ) {
 
+    public static AddOfferDTO empty() {
+        return new AddOfferDTO(null, null, null);
+    }
 }
