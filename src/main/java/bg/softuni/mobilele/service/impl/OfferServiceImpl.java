@@ -3,7 +3,7 @@ package bg.softuni.mobilele.service.impl;
 import bg.softuni.mobilele.models.dto.AddOfferDTO;
 import bg.softuni.mobilele.models.dto.OfferDetailsDTO;
 import bg.softuni.mobilele.models.dto.OfferSummaryDTO;
-import bg.softuni.mobilele.models.entity.Offer;
+import bg.softuni.mobilele.models.entity.OfferEntity;
 import bg.softuni.mobilele.repository.OfferRepository;
 import bg.softuni.mobilele.service.OfferService;
 import org.modelmapper.ModelMapper;
@@ -24,7 +24,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public long createOrder(AddOfferDTO addOfferDTO) {
-        return offerRepository.save(modelMapper.map(addOfferDTO, Offer.class)).getId();
+        return offerRepository.save(modelMapper.map(addOfferDTO, OfferEntity.class)).getId();
     }
 
     @Override

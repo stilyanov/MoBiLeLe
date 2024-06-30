@@ -1,6 +1,6 @@
 package bg.softuni.mobilele.models.dto;
 
-import bg.softuni.mobilele.models.enums.EngineType;
+import bg.softuni.mobilele.models.enums.EngineTypeEnum;
 
 public class OfferDetailsDTO {
     private Long id;
@@ -9,7 +9,7 @@ public class OfferDetailsDTO {
 
     private Integer mileage;
 
-    private EngineType engineType;
+    private EngineTypeEnum engineType;
 
     public Long getId() {
         return id;
@@ -35,11 +35,11 @@ public class OfferDetailsDTO {
         this.mileage = mileage;
     }
 
-    public EngineType getEngineType() {
+    public EngineTypeEnum getEngineType() {
         return engineType;
     }
 
-    public void setEngineType(EngineType engineType) {
+    public void setEngineType(EngineTypeEnum engineType) {
         this.engineType = engineType;
     }
 }

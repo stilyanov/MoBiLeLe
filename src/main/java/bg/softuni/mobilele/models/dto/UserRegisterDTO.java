@@ -6,7 +6,7 @@ import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
-public class RegisterUserDTO implements Serializable {
+public class UserRegisterDTO implements Serializable {
 
     @NotEmpty
     @Size(min = 5, max = 20)

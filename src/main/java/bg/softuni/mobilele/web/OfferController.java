@@ -1,7 +1,7 @@
 package bg.softuni.mobilele.web;
 
 import bg.softuni.mobilele.models.dto.AddOfferDTO;
-import bg.softuni.mobilele.models.enums.EngineType;
+import bg.softuni.mobilele.models.enums.EngineTypeEnum;
 import bg.softuni.mobilele.service.OfferService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -21,8 +21,8 @@ public class OfferController {
     }
 
     @ModelAttribute("allEngineTypes")
-    public EngineType[] allEngineTypes() {
-        return EngineType.values();
+    public EngineTypeEnum[] allEngineTypes() {
+        return EngineTypeEnum.values();
     }
 
     @GetMapping("/add")

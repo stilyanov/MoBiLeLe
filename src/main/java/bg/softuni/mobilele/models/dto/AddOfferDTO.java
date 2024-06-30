@@ -1,6 +1,6 @@
 package bg.softuni.mobilele.models.dto;
 
-import bg.softuni.mobilele.models.enums.EngineType;
+import bg.softuni.mobilele.models.enums.EngineTypeEnum;
 import jakarta.validation.constraints.*;
 
 public record AddOfferDTO(
@@ -9,7 +9,7 @@ public record AddOfferDTO(
                 min = 5,
                 max = 500) String description,
         @NotNull @PositiveOrZero Integer mileage,
-        @NotNull EngineType engineType
+        @NotNull EngineTypeEnum engineType
 ) {
 
     public static AddOfferDTO empty() {

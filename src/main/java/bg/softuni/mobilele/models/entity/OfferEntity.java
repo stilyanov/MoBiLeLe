@@ -1,7 +1,7 @@
 package bg.softuni.mobilele.models.entity;
 
 
-import bg.softuni.mobilele.models.enums.EngineType;
+import bg.softuni.mobilele.models.enums.EngineTypeEnum;
 import bg.softuni.mobilele.models.enums.TransmissionType;
 import jakarta.persistence.*;
 
@@ -9,14 +9,14 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "offers")
-public class Offer extends BaseEntity{
+public class OfferEntity extends BaseEntity{
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "engine")
     @Enumerated(value = EnumType.ORDINAL)
-    private EngineType engineType;
+    private EngineTypeEnum engineType;
 
     @Column
     private String imageUrl;
@@ -44,7 +44,7 @@ public class Offer extends BaseEntity{
     private Model model;
 
     @ManyToOne
-    private User seller;
+    private UserEntity seller;
 
     public Model getModel() {
         return model;
@@ -54,11 +54,11 @@ public class Offer extends BaseEntity{
         this.model = model;
     }
 
-    public User getSeller() {
+    public UserEntity getSeller() {
         return seller;
     }
 
-    public void setSeller(User seller) {
+    public void setSeller(UserEntity seller) {
         this.seller = seller;
     }
 
@@ -70,11 +70,11 @@ public class Offer extends BaseEntity{
         this.description = description;
     }
 
-    public EngineType getEngineType() {
+    public EngineTypeEnum getEngineType() {
         return engineType;
     }
 
-    public void setEngineType(EngineType engineType) {
+    public void setEngineType(EngineTypeEnum engineType) {
         this.engineType = engineType;
     }
 
