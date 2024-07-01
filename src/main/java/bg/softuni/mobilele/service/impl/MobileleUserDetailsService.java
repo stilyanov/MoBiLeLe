@@ -25,7 +25,7 @@ public class MobileleUserDetailsService implements UserDetailsService {
         return this.userRepository
                 .findByEmail(email)
                 .map(MobileleUserDetailsService::map)
-                .orElseThrow(() -> new UsernameNotFoundException("UserEntity not found with email ->" + email));
+                .orElseThrow(() -> new UsernameNotFoundException("UserEntity not found with email: " + email));
 
     }
 

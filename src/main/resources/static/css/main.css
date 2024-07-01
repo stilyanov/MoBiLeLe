@@ -57,9 +57,3 @@ form.main-form {
 .logged-user {
      color: white;
 }
-
-.btn-logout {
-     background: transparent;
-     border: none;
-     cursor: pointer;
-}

@@ -20,18 +20,18 @@ public class OfferController {
         this.offerService = offerService;
     }
 
+    @ModelAttribute("addOfferDTO")
+    public AddOfferDTO addOfferDTO() {
+        return new AddOfferDTO();
+    }
+
     @ModelAttribute("allEngineTypes")
     public EngineTypeEnum[] allEngineTypes() {
         return EngineTypeEnum.values();
     }
 
     @GetMapping("/add")
-    public String newOffer(Model model) {
-
-        if (!model.containsAttribute("addOfferDTO")) {
-            model.addAttribute("addOfferDTO", AddOfferDTO.empty());
-        }
-
+    public String newOffer() {
         return "offer-add";
     }
 
